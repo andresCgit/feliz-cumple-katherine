@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón para Katherine</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            background: linear-gradient(135deg, #0c0c2a, #1a1a3a, #2d1b45);
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .title {
+            color: #ff6b7a;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 107, 122, 0.8);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { 
+                text-shadow: 0 0 15px rgba(255, 107, 122, 0.8);
+            }
+            to { 
+                text-shadow: 0 0 25px rgba(255, 107, 122, 1),
+                            0 0 35px rgba(255, 107, 122, 0.6);
+            }
+        }
+
+        .heart-container {
+            position: relative;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            transform-origin: center;
+            width: min(450px, 90vw);
+            height: min(400px, 80vw);
+            margin: 20px 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            25% { 
+                transform: scale(1.1); 
+            }
+            50% { 
+                transform: scale(1.05); 
+            }
+            75% { 
+                transform: scale(1.15); 
+            }
+        }
+
+        .heart-text {
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 100, 120, 0.8);
+            user-select: none;
+            position: absolute;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { 
+                text-shadow: 0 0 10px rgba(255, 100, 120, 0.8),
+                            0 0 20px rgba(255, 100, 120, 0.6);
+            }
+            to { 
+                text-shadow: 0 0 20px rgba(255, 100, 120, 1),
+                            0 0 30px rgba(255, 100, 120, 0.8),
+                            0 0 40px rgba(255, 100, 120, 0.6);
+            }
+        }
+
+        /* Nombre principal - centrado y destacado */
+        .name-main {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 107, 122, 1),
+                        0 0 30px rgba(255, 107, 122, 0.8);
+            z-index: 10;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes nameGlow {
+            from { 
+                text-shadow: 0 0 20px rgba(255, 107, 122, 1),
+                            0 0 30px rgba(255, 107, 122, 0.8);
+            }
+            to { 
+                text-shadow: 0 0 30px rgba(255, 107, 122, 1),
+                            0 0 40px rgba(255, 107, 122, 1),
+                            0 0 50px rgba(255, 107, 122, 0.6);
+            }
+        }
+
+        /* Palabras del corazón */
+        .word {
+            position: absolute;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 100, 120, 0.6);
+            animation: wordGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes wordGlow {
+            from { 
+                opacity: 0.8;
+                text-shadow: 0 0 8px rgba(255, 100, 120, 0.6);
+            }
+            to { 
+                opacity: 1;
+                text-shadow: 0 0 15px rgba(255, 100, 120, 0.9);
+            }
+        }
+
+        /* Diferentes tamaños y colores para las palabras */
+        .word-large {
+            font-size: clamp(0.8rem, 3vw, 1.1rem);
+            color: #ff4757;
+        }
+
+        .word-medium {
+            font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+            color: #ff6b7a;
+        }
+
+        .word-small {
+            font-size: clamp(0.5rem, 2vw, 0.7rem);
+            color: #ff8a95;
+        }
+
+        .word-tiny {
+            font-size: clamp(0.4rem, 1.8vw, 0.6rem);
+            color: #ffa8b0;
+        }
+
+        /* Partículas flotantes */
+        .particle {
+            position: absolute;
+            color: #ff6b7a;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg); 
+                opacity: 1;
+            }
+        }
+
+        /* Mensaje final */
+        .message {
+            color: #ff6b7a;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-style: italic;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out 2s forwards;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 107, 122, 0.6);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .heart-container {
+                width: 95vw;
+                height: 75vw;
+            }
+            
+            .title {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">¡Feliz Cumpleaños Katherine!</div>
+    
+    <div class="heart-container">
+        <!-- Parte superior izquierda del corazón -->
+        <div class="word word-large" style="top: 2%; left: 18%;">AMOR</div>
+        <div class="word word-medium" style="top: 6%; left: 25%;">Pasión</div>
+        <div class="word word-small" style="top: 4%; left: 32%;">Ternura</div>
+        <div class="word word-medium" style="top: 8%; left: 38%;">Vida</div>
+        <div class="word word-tiny" style="top: 2%; left: 44%;">Dulce</div>
+        <div class="word word-small" style="top: 10%; left: 48%;">Bella</div>
+        
+        <!-- Parte superior derecha del corazón -->
+        <div class="word word-large" style="top: 2%; left: 54%;">FELIZ</div>
+        <div class="word word-medium" style="top: 6%; left: 62%;">Alegría</div>
+        <div class="word word-small" style="top: 4%; left: 68%;">Sonrisa</div>
+        <div class="word word-medium" style="top: 8%; left: 74%;">Luz</div>
+        <div class="word word-tiny" style="top: 2%; left: 78%;">Estrella</div>
+        <div class="word word-small" style="top: 10%; left: 82%;">Cielo</div>
+        
+        <!-- Lado izquierdo del corazón -->
+        <div class="word word-medium" style="top: 14%; left: 12%;">Corazón</div>
+        <div class="word word-small" style="top: 18%; left: 8%;">Latido</div>
+        <div class="word word-tiny" style="top: 22%; left: 6%;">Alma</div>
+        <div class="word word-small" style="top: 26%; left: 4%;">Mía</div>
+        <div class="word word-medium" style="top: 30%; left: 6%;">Adorable</div>
+        <div class="word word-tiny" style="top: 34%; left: 8%;">Perfecta</div>
+        <div class="word word-small" style="top: 38%; left: 10%;">Única</div>
+        <div class="word word-medium" style="top: 42%; left: 12%;">Tesoro</div>
+        <div class="word word-tiny" style="top: 46%; left: 14%;">Preciosa</div>
+        <div class="word word-small" style="top: 50%; left: 16%;">Diosa</div>
+        <div class="word word-medium" style="top: 54%; left: 18%;">Princesa</div>
+        
+        <!-- Lado derecho del corazón -->
+        <div class="word word-medium" style="top: 14%; left: 85%;">Hermosa</div>
+        <div class="word word-small" style="top: 18%; left: 88%;">Radiante</div>
+        <div class="word word-tiny" style="top: 22%; left: 90%;">Especial</div>
+        <div class="word word-small" style="top: 26%; left: 92%;">Reina</div>
+        <div class="word word-medium" style="top: 30%; left: 90%;">Ángel</div>
+        <div class="word word-tiny" style="top: 34%; left: 88%;">Divina</div>
+        <div class="word word-small" style="top: 38%; left: 86%;">Sublime</div>
+        <div class="word word-medium" style="top: 42%; left: 84%;">Magia</div>
+        <div class="word word-tiny" style="top: 46%; left: 82%;">Encanto</div>
+        <div class="word word-small" style="top: 50%; left: 80%;">Milagro</div>
+        <div class="word word-medium" style="top: 54%; left: 78%;">Bendición</div>
+        
+        <!-- Parte superior ancha - más palabras -->
+        <div class="word word-small" style="top: 12%; left: 20%;">Contigo</div>
+        <div class="word word-tiny" style="top: 15%; left: 28%;">Eternidad</div>
+        <div class="word word-medium" style="top: 16%; left: 35%;">Siempre</div>
+        <div class="word word-small" style="top: 13%; left: 42%;">Juntos</div>
+        <div class="word word-tiny" style="top: 17%; left: 48%;">Para</div>
+        <div class="word word-medium" style="top: 14%; left: 54%;">Toda</div>
+        <div class="word word-small" style="top: 18%; left: 60%;">La</div>
+        <div class="word word-tiny" style="top: 15%; left: 66%;">Vida</div>
+        <div class="word word-medium" style="top: 12%; left: 72%;">Felices</div>
+        
+        <!-- Alrededor del nombre - zona central -->
+        <div class="word word-small" style="top: 32%; left: 25%;">Razón</div>
+        <div class="word word-tiny" style="top: 36%; left: 30%;">De</div>
+        <div class="word word-medium" style="top: 40%; left: 32%;">Vivir</div>
+        <div class="word word-small" style="top: 44%; left: 28%;">Respirar</div>
+        <div class="word word-tiny" style="top: 35%; left: 35%;">Soñar</div>
+        
+        <div class="word word-small" style="top: 32%; left: 70%;">Mi</div>
+        <div class="word word-tiny" style="top: 36%; left: 68%;">Todo</div>
+        <div class="word word-medium" style="top: 40%; left: 65%;">Universo</div>
+        <div class="word word-small" style="top: 44%; left: 67%;">Mundo</div>
+        <div class="word word-tiny" style="top: 35%; left: 62%;">Destino</div>
+        
+        <!-- Más palabras en el interior -->
+        <div class="word word-tiny" style="top: 25%; left: 22%;">Cariño</div>
+        <div class="word word-small" style="top: 28%; left: 30%;">Ilusión</div>
+        <div class="word word-tiny" style="top: 31%; left: 38%;">Esperanza</div>
+        <div class="word word-small" style="top: 29%; left: 58%;">Sueño</div>
+        <div class="word word-tiny" style="top: 26%; left: 65%;">Fantasía</div>
+        <div class="word word-small" style="top: 24%; left: 72%;">Maravilla</div>
+        
+        <!-- Nombre principal - centrado -->
+        <div class="name-main">Katherine</div>
+        
+        <!-- Parte inferior del corazón (más densa) -->
+        <div class="word word-medium" style="top: 60%; left: 15%;">Te</div>
+        <div class="word word-large" style="top: 62%; left: 20%;">AMO</div>
+        <div class="word word-small" style="top: 58%; left: 28%;">Infinito</div>
+        <div class="word word-medium" style="top: 64%; left: 35%;">Eterno</div>
+        <div class="word word-tiny" style="top: 60%; left: 42%;">Por</div>
+        <div class="word word-small" style="top: 66%; left: 46%;">Siempre</div>
+        <div class="word word-medium" style="top: 58%; left: 54%;">Con</div>
+        <div class="word word-large" style="top: 62%; left: 60%;">ALMA</div>
+        <div class="word word-small" style="top: 64%; left: 68%;">Y</div>
+        <div class="word word-medium" style="top: 58%; left: 73%;">Ser</div>
+        <div class="word word-tiny" style="top: 60%; left: 80%;">Completo</div>
+        
+        <div class="word word-small" style="top: 70%; left: 18%;">Adoración</div>
+        <div class="word word-medium" style="top: 72%; left: 28%;">Devoción</div>
+        <div class="word word-tiny" style="top: 68%; left: 36%;">Veneración</div>
+        <div class="word word-small" style="top: 74%; left: 44%;">Idolatría</div>
+        <div class="word word-medium" style="top: 70%; left: 52%;">Culto</div>
+        <div class="word word-tiny" style="top: 72%; left: 60%;">Admiración</div>
+        <div class="word word-small" style="top: 68%; left: 68%;">Fascinación</div>
+        <div class="word word-medium" style="top: 74%; left: 76%;">Embeleso</div>
+        
+        <div class="word word-tiny" style="top: 78%; left: 22%;">Ángel</div>
+        <div class="word word-small" style="top: 80%; left: 30%;">Mío</div>
+        <div class="word word-medium" style="top: 76%; left: 38%;">Hermosa</div>
+        <div class="word word-small" style="top: 82%; left: 46%;">Perfecta</div>
+        <div class="word word-tiny" style="top: 78%; left: 54%;">Divina</div>
+        <div class="word word-medium" style="top: 80%; left: 62%;">Sublime</div>
+        <div class="word word-small" style="top: 76%; left: 70%;">Celestial</div>
+        
+        <div class="word word-small" style="top: 86%; left: 25%;">Adorada</div>
+        <div class="word word-medium" style="top: 84%; left: 35%;">Amada</div>
+        <div class="word word-large" style="top: 88%; left: 44%;">QUERIDA</div>
+        <div class="word word-medium" style="top: 84%; left: 56%;">Preciada</div>
+        <div class="word word-small" style="top: 86%; left: 66%;">Valorada</div>
+        
+        <div class="word word-medium" style="top: 92%; left: 30%;">Eterna</div>
+        <div class="word word-small" style="top: 94%; left: 40%;">Unión</div>
+        <div class="word word-large" style="top: 96%; left: 47%;">AMOR</div>
+        <div class="word word-small" style="top: 94%; left: 56%;">Puro</div>
+        <div class="word word-medium" style="top: 92%; left: 64%;">Verdadero</div>
+        
+        <!-- Palabras adicionales para llenar más el corazón -->
+        <div class="word word-tiny" style="top: 20%; left: 15%;">Cariñosa</div>
+        <div class="word word-tiny" style="top: 52%; left: 22%;">Bondadosa</div>
+        <div class="word word-tiny" style="top: 24%; left: 80%;">Tierna</div>
+        <div class="word word-tiny" style="top: 52%; left: 75%;">Dulzura</div>
+        <div class="word word-tiny" style="top: 48%; left: 40%;">Melodía</div>
+        <div class="word word-tiny" style="top: 48%; left: 58%;">Armonía</div>
+        <div class="word word-tiny" style="top: 56%; left: 32%;">Poesía</div>
+        <div class="word word-tiny" style="top: 56%; left: 65%;">Canción</div>
+        
+        <!-- Partículas flotantes -->
+        <div class="particle" style="top: 5%; left: 10%; animation-delay: 0s;">♥</div>
+        <div class="particle" style="top: 25%; right: 5%; animation-delay: 1s;">♥</div>
+        <div class="particle" style="top: 60%; left: 5%; animation-delay: 2s;">♥</div>
+        <div class="particle" style="top: 70%; right: 10%; animation-delay: 0.5s;">♥</div>
+        <div class="particle" style="top: 40%; right: 2%; animation-delay: 1.5s;">♥</div>
+        <div class="particle" style="top: 15%; left: 50%; animation-delay: 2.5s;">♥</div>
+        <div class="particle" style="top: 85%; left: 15%; animation-delay: 3s;">♥</div>
+        <div class="particle" style="top: 35%; left: 2%; animation-delay: 0.8s;">♥</div>
+        
+    </div>
+    
+    <div class="message">
+        Eres el latido de mi corazón ♥
+    </div>
+
+    <script>
+        // Crear corazones flotantes
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '♥';
+            heart.style.position = 'fixed';
+            heart.style.color = '#ff6b7a';
+            heart.style.fontSize = Math.random() * 0.5 + 0.8 + 'rem';
+            heart.style.opacity = '0.6';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1';
+            heart.style.animation = 'floatUp 6s linear forwards';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 6000);
+        }
+        
+        // Crear corazones flotantes cada 3 segundos
+        setInterval(createFloatingHeart, 3000);
+        
+        // Añadir estilo para la animación floatUp
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Crear algunos corazones iniciales
+        for(let i = 0; i < 3; i++) {
+            setTimeout(createFloatingHeart, i * 1000);
+        }
+    </script>
+</body>
+</html>

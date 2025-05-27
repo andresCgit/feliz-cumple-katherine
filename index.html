@@ -183,6 +183,60 @@
             transition: transform 0.3s ease;
         }
 
+        .heart-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab, #ffa8cc);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.6);
+        }
+
+        .heart-btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .heart-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
         .continue-btn:hover {
             transform: scale(1.05);
         }
@@ -244,7 +298,7 @@
             <div class="story-text">
                 <h2>Los Momentos Más Hermosos</h2>
                 <p>Te quiero hasta cuando no te bañas 😂 Amo tus peditos que suenan como melodías únicas y tus eructos que rivalizan con cualquier sinfonía.</p>
-                <p>Nuestras risas compartidas, esos momentos donde nos carcajeamos por cualquier tontería... Como cuando tú cuidas a tus pacientes con tanto amor, tú cuidas mi corazón con la misma <span class="sparkle">✨ ternura ✨</span> de enfermera.</p>
+                <p>Nuestras risas compartidas, esos momentos donde nos carcajeamos por cualquier tontería... Como cuando tú cuidas a tus pacientes con tanto amor, tú cuidas mi corazón con la misma <span class="sparkle">✨ ternura ✨</span>.</p>
                 <p>Si fuera un programador experto, tu sonrisa sería lo primero que quiero ejecutar todos los días.</p>
             </div>
             <button class="continue-btn" onclick="showNext(4)">Continuar →</button>
@@ -255,8 +309,8 @@
             <div class="emoji-illustration">🌧️🌈💗</div>
             <div class="story-text">
                 <h2>Sanando Juntos los Corazones</h2>
-                <p>Como en la vida, no todo han sido momentos de pura felicidad... También hemos tenido nuestros días grises donde la tristeza nos visitó 😢</p>
-                <p>Pero como tú sabes mejor que nadie siendo enfermera, las heridas sanan con amor, paciencia y cuidado. Cada momento triste que pasamos juntos nos hizo más fuertes, más unidos, más enamorados.</p>
+                <p>Como en la vida, no todo han sido momentos de pura felicidad... También hemos tenido nuestros momentos difíciles 😢</p>
+                <p>Pero como tú sabes mejor que nadie, las heridas sanan con amor, paciencia y cuidado. Cada momento triste que pasamos juntos nos hizo más fuertes, más unidos, más enamorados.</p>
                 <p>Tú has sido mi <span class="sparkle">✨ medicina favorita ✨</span> - siempre sabes cómo curar mis dolores con tu amor y tu sonrisa.</p>
             </div>
             <button class="continue-btn" onclick="showNext(5)">Ver el presente →</button>
@@ -268,7 +322,7 @@
             <div class="story-text">
                 <h2>Hoy: Tu Día Especial</h2>
                 <p>¡Y aquí estamos! En tu cumpleaños número 24, y yo tengo el privilegio de celebrarlo a tu lado 🥳</p>
-                <p>Hoy tú eres el centro de atención (como debe ser), pero permíteme compilar todos mis sentimientos en este regalo hecho con mucho amor y algunas líneas de código.</p>
+                <p>Hoy tú eres el centro de atención, pero permíteme expresar todos mis sentimientos en este regalo hecho con mucho amor y algunas líneas de código.</p>
                 <p>Si mi corazón fuera un repositorio, tú tendrías acceso de <span class="sparkle">✨ administradora ✨</span> para siempre 💖</p>
                 <p>¿Lista para ver el mensaje, mi cumpleañera favorita?</p>
             </div>
@@ -291,19 +345,19 @@
             <h2 style="text-align: center; color: #8d6e63; margin-bottom: 30px;">💌 Para Katherine en su Cumpleaños 💌</h2>
             <p>Mi amor, mi vida, mi cumpleañera hermosa,</p>
             <br>
-            <p>Si estás leyendo esto, significa que desbloqueaste mi regalo especial. Como buen estudiante de Ingeniería de Sistemas, quise crear algo único que combinara mi amor por ti con mi pasión por lo que estudio.</p>
+            <p>Si estás leyendo esto, significa que desbloqueaste mi regalo especial. Como buen ñoño quise hacerte algo fuera de lo comùn, quise crear algo único que combinara mi amor por ti con lo que hago.</p>
             <br>
             <p>Katherine Salvatierra, hoy cumples 24 años y yo no puedo estar más feliz de celebrar este día a tu lado. Cada día doy gracias a Dios por haberte puesto en mi camino.</p>
             <br>
-            <p>Eres la función más importante de mi vida - sin ti, mi programa no ejecutaría correctamente. En mi base de datos personal, tu felicidad tiene la prioridad más alta, y tu sonrisa es mi output favorito.</p>
+            <p>Eres muy importante de mi vida - sin ti, mi corazon no late correctamente. En el cual, tu felicidad tiene la prioridad más alta, y tu sonrisa es mi imagen favorita.</p>
             <br>
             <p>Te amo con todas mis peculiaridades: amo cuando te despiertas despeinada, cuando nos abrazamos hasta dormirnos y comemos hasta reventar, y sí... incluso amo esos ruiditos raros que haces y que nadie más escucha.</p>
             <br>
-            <p>Hemos reído juntos hasta que nos dolió la panza, hemos llorado juntos en los momentos difíciles, y hemos creado los recuerdos más hermosos que guardo en mi corazón como si fuera mi memoria RAM más preciada.</p>
+            <p>Hemos reído juntos hasta que nos dolió la panza, hemos llorado juntos en los momentos difíciles, y hemos creado los recuerdos más hermosos que guardo en mi corazón como mis memorias más preciadas.</p>
             <br>
-            <p>En este día tan especial, quiero que sepas que mi amor por ti no tiene errores, no necesita reparaciones, y viene con mi corazón entero para toda la vida. Eres la luz que ilumina mis días, el abrazo que necesito cuando estoy triste, y la razón por la que sonrío cada mañana.</p>
+            <p>En este día tan especial, quiero que sepas que mi amor por ti no tiene errores, no necesita reparaciones, y viene en mi corazón para toda la vida. Eres la luz que ilumina mis días, el abrazo que necesito cuando estoy triste, y la razón por la que sonrío cada mañana.</p>
             <br>
-            <p>Tu amor es como el cuidado que das a tus pacientes: tierno, dedicado, sanador. Pero a mí me das mucho más que eso, me das tu alma completa, tus risas, tus sueños, y esa manera única que tienes de hacer que todo sea mejor.</p>
+            <p>El amor que me das es: tierno, dedicado, sanador. Pero a mí me das mucho más que eso, me das tu alma completa, tus risas, tus sueños, y esa manera única que tienes de hacer que todo sea mejor.</p>
             <br>
             <p>¡FELIZ CUMPLEAÑOS MI AMOR! Que este nuevo año de vida esté lleno de alegría, aventuras, y muchos momentos más para seguir siendo felices juntos.</p>
             <br>
@@ -311,6 +365,10 @@
                 Con todo mi amor y algunas líneas de código,<br>
                 <span style="font-size: 1.2em;">❤️ El amor de tu vida ❤️</span><br>
                 <small>P.D: Este regalo no requiere instalación, pero sí requiere muchos besos 😘</small>
+            </div>
+            <br>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="heart-btn" onclick="openHeart()">¿Quieres ver mi corazón? 💓</button>
             </div>
         </div>
     </div>
@@ -434,6 +492,47 @@
                 btn.innerHTML = '🔇';
                 musicPlaying = true;
             }
+        }
+
+        function openHeart() {
+            // Crear overlay de transición
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle, #ff6b9d, #ff8fab, #ffa8cc);
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.8s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4em;
+            `;
+            //overlay.innerHTML = '💓';
+            
+            document.body.appendChild(overlay);
+            
+            // Hacer aparecer el overlay
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+            
+            // Después de la animación, abrir la nueva página
+            setTimeout(() => {
+                window.open('corazon-katherine.html', '_blank');
+                
+                // Quitar el overlay
+                setTimeout(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(overlay);
+                    }, 800);
+                }, 500);
+            }, 1200);
         }
 
         // Inicializar
